@@ -1,18 +1,11 @@
-//
-// Created by alpharius on 16.03.19.
-//
-
 #include "Logic_elements.h"
 
-void Logic_elements::pass_state(char order) {
-    if (order == 1)
-        for(int i=0; i<out.size(); i++)
-            out[i]->input1 = state;
-    else
-        for(int i=0; i<out.size(); i++)
-            out[i]->input2 = state;
+void Logic_element::push_state(std::vector<char> order) {
+    for(size_t i=0; i<order.size(); i++){
+        out[i]->input[order[i]] = state;
+    }
 }
 
-Logic_elements::Logic_elements(char _state) {
+Logic_element::Logic_element(char _state) {
     state = _state;
 }
