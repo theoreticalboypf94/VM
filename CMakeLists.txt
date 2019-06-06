@@ -3,4 +3,4 @@ project(VM)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(VM main.cpp Logic_elements.cpp Logic_elements.h)
+add_executable(VM main.cpp Logic_elements.cpp Logic_elements.h MUL_8bit.cpp)

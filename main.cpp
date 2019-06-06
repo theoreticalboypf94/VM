@@ -1,49 +1,28 @@
 #include <iostream>
 #include "Logic_elements.h"
+#define MUL_TEST
 
 int main(){
-//    XOR a,b;
-//    I c,d;
-//    std::string i1, i2;
-//
-//    a.out.push_back(&b);
-//    a.out.push_back(&c);
-//
-//    b.out.push_back(&a);
-//    b.out.push_back(&d);
-//
-//    for(;;){
-//        //std::cin >>  a.input[0] >>  b.input[1];
-//        std::cin >> i1 >> i2;
-//        a.input[0] = std::stoi(i1);
-//        b.input[1] = std::stoi(i2);
-//        a.compute_state();
-//        b.compute_state();
-//        a.push_state({0,0});
-//        b.push_state({1,0});
-//        c.compute_state();
-//        d.compute_state();
-//
-//        std::cout << "RESULT " << (int) c.state << " "
-//        <<(int) d.state << std::endl;
-//    }
 
-    //MUL
-    //NOT n;
-    //n.input[0] = 0;
-    //n.compute_state();
-    //std::cout << (int) n.state;
+    // ТЕСТИРОВАНИЕ МУЛЬТИПЛЕКСЕРА
+#ifdef MUL_TEST
     MUL m;
-    std::string A, B, SEL;
-    for(;;){
-        std::cin >> A >> B >> SEL;
-        m.input[0] = std::stoi(A);
-        m.input[1] = std::stoi(B);
-        m.input[2] = std::stoi(SEL);
-
-        m.compute_state();
-        std::cout << (int) m.state << std::endl;
+    std::cout << "SEL\tA\tB\tRESULT\n";
+    for(char SEL=0; SEL<2; SEL++){
+        for (char A=0; A<2; A++){
+            for (char B=0; B<2; B++){
+                m.input[0] = A;
+                m.input[1] = B;
+                m.input[2] = SEL;
+                m.compute_state();
+                std::cout << (int)SEL << "\t"
+                << (int) A << "\t"
+                << (int) B << "\t"
+                << (int) m.state << "\n";
+            }
+        }
     }
+#endif
 
     return 0;
 }

@@ -90,6 +90,7 @@ class MUL: public Logic_element{
      *          A |insert0  |
      *          B |insert1  |  -- or (A if sel == 0) or (B if sel == 1)
      *        SEL |insert2__|
+     *  Подтверждено таблицей истиности
      */
 public:
     MUL(): Logic_element(0) {input.resize(3);}
@@ -119,20 +120,14 @@ public:
     }
 };
 
-class MUL8bit: public Logic_element{
-    MUL8bit(0) {input.resize(17);}
-    void compute_state(){
+class MUL_8bit: public Logic_element{
+    /* только тут нужно уже переопределить и
+        state & pass state
+     */
 
-    }
+    
 };
 
-class bus8bit{
-public:
-    std::vector<I> bus;
-    std::vector<char> input;
-    bus8bit() {bus.resize(8);};
-
-};
 
 
 #endif
