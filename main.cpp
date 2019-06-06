@@ -1,11 +1,19 @@
 #include <iostream>
 #include "Logic_elements.h"
+#include "stdio.h"
+
+//                      TEST CASES
 #define MUL_TEST
+#define MUL_8BIT_TEST
+
+//                      CONSTANTS
+#define BYTE 8
 
 int main(){
 
     // ТЕСТИРОВАНИЕ МУЛЬТИПЛЕКСЕРА
 #ifdef MUL_TEST
+    printf("\ttest of table of true for MUL\n");
     MUL m;
     std::cout << "SEL\tA\tB\tRESULT\n";
     for(char SEL=0; SEL<2; SEL++){
@@ -22,7 +30,21 @@ int main(){
             }
         }
     }
+    printf("\n\n");
 #endif
+
+#ifdef MUL_8BIT_TEST
+    printf("\ttest of 8bim multiplexer\n");
+
+    MUL_8bit m8b;
+    m8b.read_A_B_SET("11110000", "00001111","0");
+    m8b.compute_state();
+    for (int i=0; i<BYTE; i++)
+        printf("%d", m8b.state[i]);
+
+
+#endif //MUL_8BIT_TEST
+
 
     return 0;
 }

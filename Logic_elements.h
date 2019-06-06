@@ -10,6 +10,7 @@ public:
     void push_state(std::vector<char> order);
     char state = 0;
     Logic_element(char _state);
+    Logic_element() = default;
 };
 
 class XOR:public Logic_element{
@@ -123,9 +124,28 @@ public:
 class MUL_8bit: public Logic_element{
     /* только тут нужно уже переопределить и
         state & pass state
+        input[0] = A gate
+        input[1] = B gate
+        input[2] = SET (single bit)
      */
+public:
 
-    
+    MUL_8bit() {
+        input.resize(3);
+        input[0].resize(8);
+        input[1].resize(8);
+        input[2].resize(1);
+
+        state.resize(8);
+    }
+
+    std::vector<std::vector<char>> input;
+    std::vector<Logic_element*> out;
+    std::vector<char> state;
+
+    void compute_state();
+
+    void read_A_B_SET(char*, char*, char*);
 };
 
 
