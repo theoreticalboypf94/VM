@@ -34,6 +34,8 @@ int main(){
 #endif
 
 #ifdef MUL_8BIT_TEST
+    // всеравно русские будут читать, добавил тест на 8-битный мультиплексер. норм работает
+    // важно "0" это 48 в интеджере
     printf("\ttest of 8bim multiplexer\n");
 
     MUL_8bit m8b;
